@@ -3,7 +3,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import Holiday from './date';
-
+//Service Logic
 function clearFields() {
   $('.date').val("");
   $('.showNames').append("");
@@ -22,7 +22,7 @@ function getElements(response) {
     }
   }
 }
-
+//UI Logic
 
 $(document).ready(function () {
   $('#selector').submit(function(event) {

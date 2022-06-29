@@ -3,9 +3,10 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import Holiday from './date';
+import Drinks from './drinks';
+
 //Service Logic
 function clearFields() {
-  $('.date').val("");
   $('.showNames').append("");
   $('.showCountry').text("");
   $('.showDescription').text("");
@@ -34,5 +35,9 @@ $(document).ready(function () {
       .then(function(response) {
         getElements(response);
       });
+  $('#drinks').submit(function(event) {
+    event.preventDefault();
+    let 
+  }) 
   });
 });

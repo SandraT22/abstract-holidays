@@ -3,7 +3,8 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import Holiday from './date';
-import Drinks from './drinks';
+import Drinks from './drinksService.js';
+
 
 //Service Logic
 function clearFields() {
@@ -13,11 +14,9 @@ function clearFields() {
 }
 
 function getElements(response) {
-  console.log(response);
-  console.log(`${response.name}`);
   for (let i = 0; i <= 4; i ++) {
-    console.log(i);
     if (response[i]) {
+      console.log(response[i]);
       $('.showName').append("<p>" + `Holiday Name: ${response[i].name}` 
        + "<br>" + `Holiday Type: ${response[i].type}` + "<br>" + `Country: ${response[i].country}` + "</p>");
     }
@@ -35,9 +34,18 @@ $(document).ready(function () {
       .then(function(response) {
         getElements(response);
       });
-  $('#drinks').submit(function(event) {
-    event.preventDefault();
-    let 
-  }) 
+  });
+  $('#randomDrink').click(function() {
+    let promise = Drinks.getDrinks();
+    promise.then(function(response) {
+      const body = JSON.parse(response);
+      console.log(body);
+      $('.showDrink').text(`Your drink for the day is ${body.drinks[0].strDrink} 
+      ` + <br>);
+      $('.showDrink').append(`Your drink for the day is ${body.drinks[0].strInstructions} 
+      `);
+    }, function(error) {
+      $('.showErrors').text(`there was an error processing your request: ${error}`);
+    });
   });
 });

@@ -4,9 +4,9 @@ export default class Drinks {
       let request = new XMLHttpRequest();
       const url = `https://www.thecocktaildb.com/api/json/v1/1/random.php`;
       request.onload = function() {
-        console.log(this.status);
+        
         if (this.status === 200) {
-          console.log(request);
+         
           resolve(request.response);
         } else {
           reject(request.response);
